@@ -77,27 +77,20 @@
 
     <!-- LOGO -->
     <div class="flex items-center">
-      <img
-        src="./logo.png"
-        class="w-16 sm:w-20 h-auto object-contain"
-        alt="Logo"
-      />
+      <img src="./logo.png" class="w-16 sm:w-20 h-auto object-contain" alt="Logo"/>
     </div>
 
-    <!-- NAV -->
+    <!-- DESKTOP NAV -->
     <nav class="hidden md:flex gap-8 text-sm text-zinc-300">
       <a href="#releases" class="hover:text-white transition">Дискография</a>
       <a href="#latest" class="hover:text-white transition">Новинки</a>
       <a href="#platforms" class="hover:text-white transition">Платформы</a>
-
-      <!-- GROUP MENU -->
-      <button onclick="openGroupModal()"
-              class="hover:text-white transition">
+      <button onclick="openGroupModal()" class="hover:text-white transition">
         О группе
       </button>
     </nav>
 
-    <!-- BUTTONS -->
+    <!-- RIGHT ACTIONS -->
     <div class="flex items-center gap-2">
 
       <a href="#platforms"
@@ -107,14 +100,49 @@
 
       <a href="https://vk.com/patriot77"
          target="_blank"
-         class="bg-white/10 border border-white/10 px-4 sm:px-5 py-2 rounded-xl font-bold text-xs sm:text-sm hover:bg-white/20 transition">
+         class="bg-white/10 border border-white/10 px-4 sm:px-5 py-2 rounded-xl font-bold text-xs sm:text-sm hover:bg-white/20 transition hidden sm:flex">
         Сотрудничество
       </a>
+
+      <!-- BURGER -->
+      <button onclick="toggleMenu()"
+              class="md:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-white/10 border border-white/10">
+        ☰
+      </button>
 
     </div>
 
   </div>
+  <!-- MOBILE MENU OVERLAY -->
+<div id="overlay"
+     onclick="toggleMenu()"
+     class="hidden fixed inset-0 bg-black/60 z-[998]"></div>
 
+<!-- MOBILE MENU -->
+<div id="mobileMenu"
+     class="fixed top-0 right-0 h-full w-[78%] max-w-sm bg-black/95 backdrop-blur-xl z-[999]
+            transform translate-x-full transition-transform duration-300 p-6 flex flex-col gap-6">
+
+  <div class="flex justify-between items-center mb-4">
+    <span class="text-white font-bold">Меню</span>
+    <button onclick="toggleMenu()" class="text-2xl">✕</button>
+  </div>
+
+  <a href="#releases" onclick="toggleMenu()" class="text-zinc-300 hover:text-white">Дискография</a>
+  <a href="#latest" onclick="toggleMenu()" class="text-zinc-300 hover:text-white">Новинки</a>
+  <a href="#platforms" onclick="toggleMenu()" class="text-zinc-300 hover:text-white">Платформы</a>
+
+  <button onclick="openGroupModal(); toggleMenu()" class="text-left text-zinc-300 hover:text-white">
+    О группе
+  </button>
+
+  <a href="#platforms"
+     onclick="toggleMenu()"
+     class="mt-4 bg-white text-black px-4 py-3 rounded-xl font-bold text-center">
+    Слушать
+  </a>
+
+</div>
 </header>
 
 <!-- HERO -->
@@ -475,6 +503,26 @@ PODТЕКСТ ориентирован на слушателя, которому
     document.getElementById("heroCountdown").innerHTML = timerText;
 
   }, 1000);
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+
+    const isOpen = menu.classList.contains('translate-x-0');
+
+    if (isOpen) {
+      menu.classList.remove('translate-x-0');
+      menu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    } else {
+      menu.classList.add('translate-x-0');
+      menu.classList.remove('translate-x-full');
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
 </script>
 
 </body>
