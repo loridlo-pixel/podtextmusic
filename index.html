@@ -21,126 +21,165 @@
   <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-700/20 blur-3xl rounded-full"></div>
 </div>
 
+<!-- POPUP -->
+<div id="aboutModal" class="hidden fixed inset-0 z-[999] items-center justify-center bg-black/80 backdrop-blur-xl p-4">
+
+  <div class="max-w-4xl w-full bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+
+    <img src="./hero3.png" class="w-full h-48 sm:h-64 object-cover"/>
+
+    <div class="p-6 sm:p-10">
+
+      <div class="flex justify-between mb-6">
+        <h2 class="text-3xl font-black">О группе</h2>
+        <button onclick="toggleAbout(false)">✕</button>
+      </div>
+
+      <p class="text-zinc-300">
+        PODТЕКСТ — музыкальный проект про город, жизнь и эмоции.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
 <!-- HEADER -->
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
 
-    <img src="./logo.png" class="w-20 sm:w-24 h-auto object-contain" />
+    <img src="./logo.png" class="w-20 sm:w-24 object-contain"/>
 
-    <nav class="hidden md:flex gap-8 text-sm text-zinc-300">
+    <nav class="hidden md:flex gap-6 text-sm text-zinc-300">
+
       <a href="#releases">Дискография</a>
       <a href="#latest">Новинки</a>
       <a href="#platforms">Платформы</a>
+
+      <button onclick="toggleAbout(true)">О группе</button>
+
     </nav>
 
-    <a href="#platforms"
-       class="bg-white text-black px-5 py-2 rounded-xl font-bold text-sm">
-      Слушать
-    </a>
+    <div class="flex gap-2">
+
+      <a href="#platforms"
+         class="bg-white text-black px-4 py-2 rounded-xl font-bold text-sm">
+        Слушать
+      </a>
+
+      <a href="https://vk.com/im"
+         target="_blank"
+         class="bg-white/10 border border-white/10 px-4 py-2 rounded-xl text-sm">
+        Сотрудничество
+      </a>
+
+    </div>
 
   </div>
 </header>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center px-4 sm:px-6 py-16">
+<section class="min-h-screen flex items-center px-4 sm:px-6">
 
-  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
 
     <div>
 
-      <div class="text-xs sm:text-sm text-zinc-400 mb-4 tracking-[0.2em]">
-        PODТЕКСТ
-      </div>
-
-      <h1 class="text-5xl sm:text-7xl font-black leading-none">
-        <span class="text-zinc-500">MUSIC</span><br>
-        <span class="text-white">HUB</span>
+      <h1 class="text-5xl sm:text-7xl font-black">
+        <span class="text-zinc-500">POD</span><br>
+        ТЕКСТ
       </h1>
 
-      <p class="text-zinc-400 mt-6 max-w-xl">
-        Официальный хаб релизов и платформ.
-      </p>
+      <p class="text-zinc-400 mt-4">Официальный артист-хаб</p>
+
+      <!-- SOCIALS -->
+      <div class="flex gap-4 mt-6">
+
+        <a href="https://www.youtube.com/@podtextdmitry" target="_blank">
+          <img src="./youtube.svg" class="h-8"/>
+        </a>
+
+        <a href="https://www.tiktok.com/@podtext_music" target="_blank">
+          <img src="./tiktok.svg" class="h-8"/>
+        </a>
+
+        <a href="https://rutube.ru/channel/78054626/" target="_blank">
+          <img src="./rutube.svg" class="h-8"/>
+        </a>
+
+      </div>
 
     </div>
 
-    <img src="./hero3.png" class="rounded-3xl border border-white/10" />
+    <img src="./hero3.png" class="rounded-3xl border border-white/10"/>
 
+  </div>
+</section>
+
+<!-- LATEST -->
+<section id="latest" class="py-16 px-4 sm:px-6 border-t border-white/10">
+
+  <div class="max-w-7xl mx-auto">
+
+    <h2 class="text-3xl font-black mb-8">Новинка</h2>
+
+    <div class="grid md:grid-cols-2 gap-8 bg-white/5 border border-white/10 p-6 rounded-3xl">
+
+      <img src="./dve_sestry.png" class="rounded-2xl"/>
+
+      <div>
+
+        <h3 class="text-3xl font-black">Две сестры</h3>
+        <p class="text-zinc-400">Первый альбом • 2026</p>
+
+        <!-- TIMER -->
+        <div class="grid grid-cols-4 gap-2 mt-4 text-center text-sm">
+
+          <div><div id="days">00</div><div>дн</div></div>
+          <div><div id="hours">00</div><div>ч</div></div>
+          <div><div id="minutes">00</div><div>м</div></div>
+          <div><div id="seconds">00</div><div>с</div></div>
+
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </section>
 
 <!-- DISCOGRAPHY -->
-<section id="releases" class="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/10">
+<section id="releases" class="py-16 px-4 sm:px-6 border-t border-white/10">
 
   <div class="max-w-7xl mx-auto">
 
-    <h2 class="text-2xl sm:text-3xl font-black mb-10">
-      Дискография
-    </h2>
+    <h2 class="text-3xl font-black mb-8">Дискография</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- RELEASE 1 -->
-      <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-xl">
-
-        <img src="./dve_sestry.png" class="w-full h-auto object-cover"/>
-
-        <div class="p-5 sm:p-6">
-          <h3 class="font-bold text-lg">Две сестры</h3>
-          <p class="text-zinc-400 text-sm">Альбом</p>
+      <!-- OUT -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+        <img src="./dve_sestry.png"/>
+        <div class="p-5">
+          <h3>Две сестры</h3>
         </div>
-
       </div>
 
-      <!-- RELEASE 2 (SOON + TIMER) -->
-      <div class="relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-xl">
+      <!-- SOON -->
+      <div class="relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
 
-        <!-- overlay -->
         <div class="absolute inset-0 bg-black/60 z-10"></div>
 
-        <!-- badge -->
-        <div class="absolute top-4 left-4 z-20 bg-white text-black text-xs font-bold px-3 py-1 rounded-full">
+        <div class="absolute top-3 left-3 z-20 bg-white text-black text-xs px-3 py-1 rounded-full">
           СКОРО РЕЛИЗ
         </div>
 
-        <img src="./soon_album.png"
-             class="w-full h-auto object-cover opacity-70"/>
+        <img src="./soon_album.png" class="opacity-70"/>
 
-        <div class="p-5 sm:p-6 relative z-20">
-
-          <h3 class="font-bold text-lg text-zinc-300">
-            Новый альбом
-          </h3>
-
-          <p class="text-zinc-500 text-sm mb-3">
-            2026
-          </p>
-
-          <!-- TIMER -->
-          <div class="grid grid-cols-4 gap-2 text-center text-xs sm:text-sm">
-
-            <div>
-              <div id="days" class="font-bold text-white">00</div>
-              <div class="text-zinc-500">дней</div>
-            </div>
-
-            <div>
-              <div id="hours" class="font-bold text-white">00</div>
-              <div class="text-zinc-500">часов</div>
-            </div>
-
-            <div>
-              <div id="minutes" class="font-bold text-white">00</div>
-              <div class="text-zinc-500">мин</div>
-            </div>
-
-            <div>
-              <div id="seconds" class="font-bold text-white">00</div>
-              <div class="text-zinc-500">сек</div>
-            </div>
-
-          </div>
-
+        <div class="p-5 relative z-20">
+          <h3 class="text-zinc-300">Новый альбом</h3>
         </div>
 
       </div>
@@ -151,27 +190,50 @@
 
 </section>
 
-<!-- SCRIPT TIMER -->
+<!-- PLATFORMS -->
+<section id="platforms" class="py-16 px-4 sm:px-6 border-t border-white/10">
+
+  <div class="max-w-5xl mx-auto text-center">
+
+    <h2 class="text-3xl font-black mb-8">Платформы</h2>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <a><img src="./vkmusic.png" class="h-8 mx-auto"/></a>
+      <a><img src="./yandexmusic.svg" class="h-8 mx-auto"/></a>
+      <a><img src="./zvukmusic.svg" class="h-8 mx-auto"/></a>
+      <a><img src="./kionmusic.svg" class="h-8 mx-auto"/></a>
+
+    </div>
+
+  </div>
+</section>
+
+<footer class="text-center py-10 text-zinc-500 border-t border-white/10">
+  © PODТЕКСТ
+</footer>
+
 <script>
-const releaseDate = new Date("2026-09-01T00:00:00").getTime();
 
-function updateTimer(){
-  const now = new Date().getTime();
-  const diff = releaseDate - now;
-
-  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-  document.getElementById("days").innerText = d < 0 ? 0 : d;
-  document.getElementById("hours").innerText = h < 0 ? 0 : h;
-  document.getElementById("minutes").innerText = m < 0 ? 0 : m;
-  document.getElementById("seconds").innerText = s < 0 ? 0 : s;
+function toggleAbout(state){
+  const m = document.getElementById("aboutModal");
+  m.style.display = state ? "flex" : "none";
 }
 
-setInterval(updateTimer, 1000);
-updateTimer();
+// TIMER
+const release = new Date("2026-09-01").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const d = release - now;
+
+  document.getElementById("days").innerText = Math.floor(d / 86400000);
+  document.getElementById("hours").innerText = Math.floor((d % 86400000)/3600000);
+  document.getElementById("minutes").innerText = Math.floor((d % 3600000)/60000);
+  document.getElementById("seconds").innerText = Math.floor((d % 60000)/1000);
+
+},1000);
+
 </script>
 
 </body>
