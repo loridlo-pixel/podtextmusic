@@ -8,8 +8,44 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    html { scroll-behavior: smooth; }
-    body { background: #000; overflow-x: hidden; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000;
+      overflow-x: hidden;
+    }
+
+    .social-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    .platform-card img {
+      max-height: 34px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .release-coming {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .release-coming::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(2px);
+    }
+
+    .release-coming-content {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+    }
   </style>
 </head>
 
@@ -21,165 +57,257 @@
   <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-700/20 blur-3xl rounded-full"></div>
 </div>
 
-<!-- POPUP -->
-<div id="aboutModal" class="hidden fixed inset-0 z-[999] items-center justify-center bg-black/80 backdrop-blur-xl p-4">
-
-  <div class="max-w-4xl w-full bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
-
-    <img src="./hero3.png" class="w-full h-48 sm:h-64 object-cover"/>
-
-    <div class="p-6 sm:p-10">
-
-      <div class="flex justify-between mb-6">
-        <h2 class="text-3xl font-black">О группе</h2>
-        <button onclick="toggleAbout(false)">✕</button>
-      </div>
-
-      <p class="text-zinc-300">
-        PODТЕКСТ — музыкальный проект про город, жизнь и эмоции.
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
-
 <!-- HEADER -->
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
 
-    <img src="./logo.png" class="w-20 sm:w-24 object-contain"/>
+    <!-- LOGO -->
+    <div class="flex items-center">
+      <img
+        src="./logo.png"
+        class="w-16 sm:w-20 h-auto object-contain"
+        alt="Logo"
+      />
+    </div>
 
-    <nav class="hidden md:flex gap-6 text-sm text-zinc-300">
-
-      <a href="#releases">Дискография</a>
-      <a href="#latest">Новинки</a>
-      <a href="#platforms">Платформы</a>
-
-      <button onclick="toggleAbout(true)">О группе</button>
-
+    <!-- NAV -->
+    <nav class="hidden md:flex gap-8 text-sm text-zinc-300">
+      <a href="#releases" class="hover:text-white transition">Дискография</a>
+      <a href="#latest" class="hover:text-white transition">Новинки</a>
+      <a href="#platforms" class="hover:text-white transition">Платформы</a>
     </nav>
 
-    <div class="flex gap-2">
+    <!-- BUTTONS -->
+    <div class="flex items-center gap-2">
 
       <a href="#platforms"
-         class="bg-white text-black px-4 py-2 rounded-xl font-bold text-sm">
+         class="bg-white text-black px-4 sm:px-5 py-2 rounded-xl font-bold text-xs sm:text-sm hover:scale-105 transition">
         Слушать
       </a>
 
+      <button onclick="openGroupModal()"
+         class="bg-white/10 border border-white/10 px-4 sm:px-5 py-2 rounded-xl font-bold text-xs sm:text-sm hover:bg-white/20 transition">
+        О группе
+      </button>
+
       <a href="https://vk.com/im"
          target="_blank"
-         class="bg-white/10 border border-white/10 px-4 py-2 rounded-xl text-sm">
+         class="bg-white/10 border border-white/10 px-4 sm:px-5 py-2 rounded-xl font-bold text-xs sm:text-sm hover:bg-white/20 transition">
         Сотрудничество
       </a>
 
     </div>
 
   </div>
+
 </header>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center px-4 sm:px-6">
+<section class="min-h-screen flex items-center px-4 sm:px-6 py-16">
 
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
     <div>
 
-      <h1 class="text-5xl sm:text-7xl font-black">
-        <span class="text-zinc-500">POD</span><br>
-        ТЕКСТ
+      <div class="text-xs sm:text-sm text-zinc-400 mb-4 sm:mb-6 tracking-[0.2em]">
+        ИНФОРМАЦИЯ
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-8xl font-black leading-none">
+        POD<br>
+        <span class="text-white">ТЕКСТ</span>
       </h1>
 
-      <p class="text-zinc-400 mt-4">Официальный артист-хаб</p>
+      <p class="text-zinc-400 mt-6 sm:mt-8 max-w-xl text-sm sm:text-base leading-relaxed">
+        Официальный хаб с релизами, потоковыми платформами и дискографией.
+      </p>
+
+      <a href="#releases"
+         class="inline-block mt-8 sm:mt-10 bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-sm sm:text-base hover:scale-105 transition">
+        Дискография
+      </a>
 
       <!-- SOCIALS -->
-      <div class="flex gap-4 mt-6">
+      <div class="flex items-center gap-4 mt-8">
 
-        <a href="https://www.youtube.com/@podtextdmitry" target="_blank">
-          <img src="./youtube.svg" class="h-8"/>
+        <!-- YOUTUBE -->
+        <a href="https://www.youtube.com/@podtextdmitry"
+           target="_blank"
+           class="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white/20 transition">
+
+          <img src="./youtube.svg"
+               class="w-7 h-7 social-icon"
+               alt="YouTube"/>
+
         </a>
 
-        <a href="https://www.tiktok.com/@podtext_music" target="_blank">
-          <img src="./tiktok.svg" class="h-8"/>
+        <!-- TIKTOK -->
+        <a href="https://www.tiktok.com/@podtext_music"
+           target="_blank"
+           class="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white/20 transition">
+
+          <img src="./tiktok.svg"
+               class="w-7 h-7 social-icon"
+               alt="TikTok"/>
+
         </a>
 
-        <a href="https://rutube.ru/channel/78054626/" target="_blank">
-          <img src="./rutube.svg" class="h-8"/>
+        <!-- RUTUBE -->
+        <a href="https://rutube.ru/channel/78054626/"
+           target="_blank"
+           class="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md flex items-center justify-center hover:bg-white/20 transition">
+
+          <img src="./rutube.svg"
+               class="w-7 h-7 social-icon"
+               alt="Rutube"/>
+
         </a>
 
       </div>
 
     </div>
 
-    <img src="./hero3.png" class="rounded-3xl border border-white/10"/>
+    <div>
+      <img
+        src="./hero3.png"
+        class="rounded-[24px] sm:rounded-[32px] border border-white/10 w-full h-auto object-cover shadow-2xl"
+        alt="Artist"
+      />
+    </div>
 
   </div>
+
 </section>
 
-<!-- LATEST -->
-<section id="latest" class="py-16 px-4 sm:px-6 border-t border-white/10">
+<!-- LATEST RELEASE -->
+<section id="latest" class="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/10">
 
   <div class="max-w-7xl mx-auto">
 
-    <h2 class="text-3xl font-black mb-8">Новинка</h2>
+    <h2 class="text-2xl sm:text-3xl font-black mb-8">Новинка</h2>
 
-    <div class="grid md:grid-cols-2 gap-8 bg-white/5 border border-white/10 p-6 rounded-3xl">
+    <div class="bg-white/5 border border-white/10 rounded-3xl p-5 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 backdrop-blur-xl">
 
-      <img src="./dve_sestry.png" class="rounded-2xl"/>
+      <img
+        src="./dve_sestry.png"
+        class="rounded-2xl w-full h-auto object-cover"
+        alt="Две сестры"
+      />
 
       <div>
 
-        <h3 class="text-3xl font-black">Две сестры</h3>
-        <p class="text-zinc-400">Первый альбом • 2026</p>
+        <h3 class="text-2xl sm:text-4xl font-black mb-2">Две сестры</h3>
 
-        <!-- TIMER -->
-        <div class="grid grid-cols-4 gap-2 mt-4 text-center text-sm">
+        <p class="text-zinc-400 mb-4 sm:mb-6 text-sm sm:text-base">
+          Альбом • 2026
+        </p>
 
-          <div><div id="days">00</div><div>дн</div></div>
-          <div><div id="hours">00</div><div>ч</div></div>
-          <div><div id="minutes">00</div><div>м</div></div>
-          <div><div id="seconds">00</div><div>с</div></div>
+        <p class="text-zinc-500 mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed">
+          Новинка. Слушайте на всех стриминговых платформах. «Две сестры» — мой первый альбом.
+          10 треков о том, что знакомо почти каждому, кто хоть раз жил, любил или просто гулял по городу Омску.
+        </p>
+
+        <!-- STREAM LINKS -->
+        <div class="grid grid-cols-2 gap-3">
+
+          <!-- VK -->
+          <a target="_blank"
+             href="https://vk.com/artist/6335870159044524236"
+             class="platform-card bg-zinc-200 hover:bg-white rounded-xl px-4 py-4 flex items-center justify-center transition">
+
+            <img src="./vkmusic.png"
+                 alt="VK Music"/>
+
+          </a>
+
+          <!-- YANDEX -->
+          <a target="_blank"
+             href="https://music.yandex.ru/artist/25920059"
+             class="platform-card bg-zinc-200 hover:bg-white rounded-xl px-4 py-4 flex items-center justify-center transition">
+
+            <img src="./yandexmusic.svg"
+                 alt="Yandex Music"/>
+
+          </a>
+
+          <!-- ZVUK -->
+          <a target="_blank"
+             href="https://zvuk.com/artist/214261402"
+             class="platform-card bg-zinc-200 hover:bg-white rounded-xl px-4 py-4 flex items-center justify-center transition">
+
+            <img src="./zvukmusic.svg"
+                 alt="Zvuk"/>
+
+          </a>
+
+          <!-- MTS -->
+          <a target="_blank"
+             href="https://music.mts.ru/artist/25920059"
+             class="platform-card bg-zinc-200 hover:bg-white rounded-xl px-4 py-4 flex items-center justify-center transition">
+
+            <img src="./kionmusic.svg"
+                 alt="MTS"/>
+
+          </a>
 
         </div>
 
       </div>
 
     </div>
+
   </div>
+
 </section>
 
 <!-- DISCOGRAPHY -->
-<section id="releases" class="py-16 px-4 sm:px-6 border-t border-white/10">
+<section id="releases" class="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/10">
 
   <div class="max-w-7xl mx-auto">
 
-    <h2 class="text-3xl font-black mb-8">Дискография</h2>
+    <h2 class="text-2xl sm:text-3xl font-black mb-8 sm:mb-10">
+      Дискография
+    </h2>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- OUT -->
-      <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
-        <img src="./dve_sestry.png"/>
-        <div class="p-5">
-          <h3>Две сестры</h3>
+      <!-- EXISTING -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:scale-[1.02] transition backdrop-blur-xl">
+
+        <img src="./dve_sestry.png"
+             class="w-full h-auto object-cover"
+             alt="Album"/>
+
+        <div class="p-5 sm:p-6">
+
+          <h3 class="font-bold text-lg sm:text-xl">Две сестры</h3>
+          <p class="text-zinc-400 text-sm mb-2 sm:mb-4">Альбом</p>
+
+          <div class="text-xs text-zinc-500">На всех платформах</div>
+
         </div>
+
       </div>
 
-      <!-- SOON -->
-      <div class="relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+      <!-- COMING SOON -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-xl release-coming">
 
-        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        <img src="./soonalbum.png"
+             class="w-full h-full object-cover"
+             alt="Soon Album"/>
 
-        <div class="absolute top-3 left-3 z-20 bg-white text-black text-xs px-3 py-1 rounded-full">
-          СКОРО РЕЛИЗ
-        </div>
+        <div class="release-coming-content flex flex-col items-center justify-center text-center p-6">
 
-        <img src="./soon_album.png" class="opacity-70"/>
+          <div class="text-3xl font-black mb-3">
+            СКОРО РЕЛИЗ
+          </div>
 
-        <div class="p-5 relative z-20">
-          <h3 class="text-zinc-300">Новый альбом</h3>
+          <div id="countdown"
+               class="text-zinc-200 text-lg font-bold">
+            00 : 00 : 00 : 00
+          </div>
+
         </div>
 
       </div>
@@ -191,49 +319,120 @@
 </section>
 
 <!-- PLATFORMS -->
-<section id="platforms" class="py-16 px-4 sm:px-6 border-t border-white/10">
+<section id="platforms" class="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/10">
 
   <div class="max-w-5xl mx-auto text-center">
 
-    <h2 class="text-3xl font-black mb-8">Платформы</h2>
+    <h2 class="text-2xl sm:text-3xl font-black mb-8 sm:mb-10">
+      Музыкальные платформы
+    </h2>
 
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 
-      <a><img src="./vkmusic.png" class="h-8 mx-auto"/></a>
-      <a><img src="./yandexmusic.svg" class="h-8 mx-auto"/></a>
-      <a><img src="./zvukmusic.svg" class="h-8 mx-auto"/></a>
-      <a><img src="./kionmusic.svg" class="h-8 mx-auto"/></a>
+      <a href="https://vk.com/artist/6335870159044524236"
+         target="_blank"
+         class="platform-card bg-zinc-200 hover:bg-white rounded-2xl p-6 flex items-center justify-center transition">
+
+        <img src="./vkmusic.png" alt="VK"/>
+
+      </a>
+
+      <a href="https://music.yandex.ru/artist/25920059"
+         target="_blank"
+         class="platform-card bg-zinc-200 hover:bg-white rounded-2xl p-6 flex items-center justify-center transition">
+
+        <img src="./yandexmusic.svg" alt="Yandex"/>
+
+      </a>
+
+      <a href="https://zvuk.com/artist/214261402"
+         target="_blank"
+         class="platform-card bg-zinc-200 hover:bg-white rounded-2xl p-6 flex items-center justify-center transition">
+
+        <img src="./zvukmusic.svg" alt="Zvuk"/>
+
+      </a>
+
+      <a href="https://music.mts.ru/artist/25920059"
+         target="_blank"
+         class="platform-card bg-zinc-200 hover:bg-white rounded-2xl p-6 flex items-center justify-center transition">
+
+        <img src="./kionmusic.svg" alt="MTS"/>
+
+      </a>
 
     </div>
 
   </div>
+
 </section>
 
-<footer class="text-center py-10 text-zinc-500 border-t border-white/10">
-  © PODТЕКСТ
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-10 sm:py-12 text-center text-zinc-500 text-sm sm:text-base">
+  © PODТЕКСТ — Все права защищены
 </footer>
 
+<!-- GROUP MODAL -->
+<div id="groupModal"
+     class="fixed inset-0 bg-black/80 backdrop-blur-md z-[999] hidden items-center justify-center p-4">
+
+  <div class="bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden max-w-4xl w-full relative">
+
+    <button onclick="closeGroupModal()"
+            class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition text-xl">
+      ✕
+    </button>
+
+    <!-- HEADER IMAGE -->
+    <img src="./groupbanner.png"
+         class="w-full h-56 sm:h-80 object-cover"
+         alt="Group"/>
+
+    <!-- CONTENT -->
+    <div class="p-6 sm:p-10">
+
+      <h2 class="text-3xl sm:text-5xl font-black mb-6">
+        О группе
+      </h2>
+
+      <p class="text-zinc-400 leading-relaxed text-sm sm:text-base">
+        PODТЕКСТ — музыкальный проект, объединяющий атмосферу городских историй,
+        лирики и современной поп-музыки. Основная идея проекта —
+        передавать эмоции, воспоминания и атмосферу знакомых мест через музыку.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
 <script>
+  function openGroupModal() {
+    document.getElementById('groupModal').classList.remove('hidden');
+    document.getElementById('groupModal').classList.add('flex');
+  }
 
-function toggleAbout(state){
-  const m = document.getElementById("aboutModal");
-  m.style.display = state ? "flex" : "none";
-}
+  function closeGroupModal() {
+    document.getElementById('groupModal').classList.add('hidden');
+    document.getElementById('groupModal').classList.remove('flex');
+  }
 
-// TIMER
-const release = new Date("2026-09-01").getTime();
+  // TIMER
+  const releaseDate = new Date("2026-12-31T00:00:00").getTime();
 
-setInterval(() => {
-  const now = new Date().getTime();
-  const d = release - now;
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = releaseDate - now;
 
-  document.getElementById("days").innerText = Math.floor(d / 86400000);
-  document.getElementById("hours").innerText = Math.floor((d % 86400000)/3600000);
-  document.getElementById("minutes").innerText = Math.floor((d % 3600000)/60000);
-  document.getElementById("seconds").innerText = Math.floor((d % 60000)/1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-},1000);
-
+    document.getElementById("countdown").innerHTML =
+      `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+  }, 1000);
 </script>
 
 </body>
