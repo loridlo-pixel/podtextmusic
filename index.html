@@ -476,14 +476,18 @@ PODТЕКСТ ориентирован на слушателя, которому
 </div>
 
 <script>
-  function openGroupModal() {
-    document.getElementById('groupModal').classList.remove('hidden');
-    document.getElementById('groupModal').classList.add('flex');
+ function openGroupModal() {
+    const modal = document.getElementById('groupModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeGroupModal() {
-    document.getElementById('groupModal').classList.add('hidden');
-    document.getElementById('groupModal').classList.remove('flex');
+    const modal = document.getElementById('groupModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
   }
 
   // RELEASE TIMER
