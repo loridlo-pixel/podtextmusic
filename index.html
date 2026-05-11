@@ -106,7 +106,7 @@
 
 </header>
 
-  <!-- MOBILE MENU OVERLAY -->
+<!-- OVERLAY -->
 <div id="overlay"
      onclick="toggleMenu()"
      class="hidden fixed inset-0 bg-black/60 z-[998]"></div>
@@ -172,7 +172,7 @@
 
           <div id="heroCountdown"
                class="text-zinc-300 text-lg sm:text-2xl font-bold">
-            18д 00ч 00м 00с
+            00д 00ч 00м 00с
           </div>
 
         </div>
@@ -358,7 +358,7 @@
 
           <div id="countdown"
                class="text-zinc-200 text-lg font-bold">
-            18д 00ч 00м 00с
+            00д 00ч 00м 00с
           </div>
 
         </div>
@@ -476,7 +476,7 @@ PODТЕКСТ ориентирован на слушателя, которому
   }
 
   // RELEASE TIMER
-  const releaseDate = new Date("2026-12-31T00:00:00").getTime();
+  const releaseDate = new Date("2026-05-29T00:00:00").getTime();
 
   setInterval(() => {
 
@@ -495,7 +495,7 @@ PODТЕКСТ ориентирован на слушателя, которому
     document.getElementById("heroCountdown").innerHTML = timerText;
 
   }, 1000);
-  <script>
+ <script>
   function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     const overlay = document.getElementById('overlay');
@@ -514,7 +514,6 @@ PODТЕКСТ ориентирован на слушателя, которому
       document.body.style.overflow = 'hidden';
     }
   }
-
 </script>
 
 </body>
