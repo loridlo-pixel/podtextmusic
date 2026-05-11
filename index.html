@@ -488,17 +488,23 @@ PODТЕКСТ ориентирован на слушателя, которому
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    const timerText =
-      `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+    const timerText = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
 
-    document.getElementById("countdown").innerHTML = timerText;
-    document.getElementById("heroCountdown").innerHTML = timerText;
+    const el1 = document.getElementById("countdown");
+    const el2 = document.getElementById("heroCountdown");
+
+    if (el1) el1.innerHTML = timerText;
+    if (el2) el2.innerHTML = timerText;
 
   }, 1000);
- <script>
+
+
+  // MOBILE MENU FIXED VERSION
   function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     const overlay = document.getElementById('overlay');
+
+    if (!menu || !overlay) return;
 
     const isOpen = menu.classList.contains('translate-x-0');
 
