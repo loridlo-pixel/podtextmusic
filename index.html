@@ -59,6 +59,15 @@
     .platform-bg:hover {
       background: rgba(255,255,255,0.14);
     }
+
+    #groupModal {
+  -webkit-overflow-scrolling: touch;
+}
+
+#groupModal > div {
+  max-height: 90vh;
+  overflow-y: auto;
+}
   </style>
 </head>
 
@@ -442,10 +451,14 @@
 
   <div class="bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden max-w-4xl w-full relative">
 
-    <button onclick="closeGroupModal()"
-            class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition text-xl">
-      ✕
-    </button>
+ <button onclick="closeGroupModal()"
+        class="absolute top-3 right-3 sm:top-4 sm:right-4 z-[1001]
+               w-11 h-11 flex items-center justify-center
+               rounded-full bg-black/70 backdrop-blur-md
+               border border-white/20
+               hover:bg-white/20 transition text-2xl text-white">
+  ✕
+</button>
 
     <img src="./groupbanner.png"
          class="w-full h-56 sm:h-80 object-cover"
