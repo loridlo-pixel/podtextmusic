@@ -75,8 +75,19 @@
 
 <!-- BACKGROUND -->
 <div class="fixed inset-0 -z-10 overflow-hidden">
-  <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-700/20 blur-3xl rounded-full"></div>
-  <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-700/20 blur-3xl rounded-full"></div>
+
+  <div class="absolute top-[-150px] left-1/2 -translate-x-1/2
+              w-[900px] h-[900px]
+              bg-white/[0.04]
+              rounded-full blur-[180px]">
+  </div>
+
+  <div class="absolute bottom-[-250px] right-[-150px]
+              w-[700px] h-[700px]
+              bg-blue-500/[0.05]
+              rounded-full blur-[180px]">
+  </div>
+
 </div>
 
 <!-- HEADER -->
@@ -172,13 +183,45 @@
   <img
     src="./logo.png"
     alt="PODТЕКСТ"
-    class="w-56 sm:w-72 md:w-[420px] h-auto object-contain
-           drop-shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+class="
+w-72
+sm:w-[420px]
+md:w-[540px]
+h-auto
+object-contain
+drop-shadow-[0_0_60px_rgba(255,255,255,0.25)]
+"
   />
 </div>
       <p class="text-zinc-400 mt-6 sm:mt-8 max-w-xl text-sm sm:text-base leading-relaxed">
-        Официальный хаб с релизами, потоковыми платформами и дискографией.
+        Музыкальный проект PODТЕКСТ.
+Песни о жизни, времени, любви и том,
+что обычно остаётся между строк.
       </p>
+      <div class="flex gap-10 mt-8">
+
+  <div>
+    <div class="text-3xl font-black">50K+</div>
+    <div class="text-zinc-500 text-sm">
+      Просмотров
+    </div>
+  </div>
+
+  <div>
+    <div class="text-3xl font-black">100+</div>
+    <div class="text-zinc-500 text-sm">
+      Подписчиков
+    </div>
+  </div>
+
+  <div>
+    <div class="text-3xl font-black">20+</div>
+    <div class="text-zinc-500 text-sm">
+      Треков
+    </div>
+  </div>
+
+</div>
 
       <!-- HERO COUNTDOWN -->
       <div class="mt-8 sm:mt-10">
@@ -190,9 +233,11 @@
           </div>
 
           <div class="text-2xl sm:text-4xl font-black mb-2">
-            Новый альбом
+            Мы стали старше
           </div>
-
+<div class="text-zinc-400 mt-2">
+8 июля 2026 • Второй студийный альбом
+</div>
           <div id="heroCountdown"
                class="text-zinc-300 text-lg sm:text-2xl font-bold">
             00д 00ч 00м 00с
